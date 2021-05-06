@@ -1,0 +1,22 @@
+@import url('./variables.css');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 15px;
+}
+
+body {
+    color: var(--text-color);
+    background: var(--bg-color);
+    font-family: var(--text-font);
+    line-height: 1.5;
+}
+
+h1,h2,h3,h4,h5 {
+    font-family: var(--heading-font);
+}

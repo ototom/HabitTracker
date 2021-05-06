@@ -1,0 +1,9 @@
+:root {
+    /* COLORS */
+    --text-color: hsl(0, 0%, 20%);
+    --bg-color: hsl(0, 0%, 100%);
+
+    /* FONTS */
+    --text-font: 'Open Sans', sans-serif;
+    --heading-font: 'Montserrat', sans-serif;
+}

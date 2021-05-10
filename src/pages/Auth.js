@@ -50,21 +50,18 @@ const Auth = () => {
                     {isLoginMode ? 'Login' : 'Sign up'}
                 </Button>
             </form>
-            {isLoginMode ? (
-                <p className='auth__switcher'>
-                    Don't have an account?
-                    <Link to='/auth/sign-up' style={{ marginLeft: '.5rem' }}>
-                        Create one!
-                    </Link>
-                </p>
-            ) : (
-                <p className='auth__switcher'>
-                    Already have an account?
-                    <Link to='/auth/sign-in' style={{ marginLeft: '.5rem' }}>
-                        Switch to login page
-                    </Link>
-                </p>
-            )}
+            <p className='auth__switcher'>
+                {isLoginMode
+                    ? `Don't have an account?`
+                    : 'Already have an account?'}
+                <Link
+                    to={`/auth/sign-${isLoginMode ? 'up' : 'in'}`}
+                    style={{ marginLeft: '.5rem' }}
+                    className={isLoading ? `disabled` : ''}
+                >
+                    {isLoginMode ? 'Create one!' : 'Switch to the login page'}
+                </Link>
+            </p>
         </div>
     );
 };

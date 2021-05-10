@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
+import Input from '../components/shared/Input/Input';
 import '../styles/auth.css';
 
 const Auth = () => {
     const { mode } = useParams();
+    const history = useHistory();
     const [isLoginMode, setIsLoginMode] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (mode === 'sign-in') {
             setIsLoginMode(true);
-        } else {
+        } else if (mode === 'sign-up') {
             setIsLoginMode(false);
+        } else {
+            history.push('/auth/sign-up');
         }
-    }, [mode]);
+    }, [mode, history]);
 
     return (
         <div className='auth__container'>
@@ -20,9 +25,29 @@ const Auth = () => {
                 <h1>{isLoginMode ? 'Login' : 'Sign up'}</h1>
             </div>
             <form className='auth__form'>
-                <input type='email' />
-                <input type='password' />
-                <button>{isLoginMode ? 'Login' : 'Sign up'}</button>
+                <Input
+                    type='email'
+                    disabled={isLoading}
+                    id='mail'
+                    name='mail'
+                    label='Email:'
+                    placeholder='Enter your email address'
+                />
+                <Input
+                    type='password'
+                    disabled={isLoading}
+                    id='password'
+                    name='password'
+                    label='Password:'
+                    placeholder='Enter password'
+                />
+                <button
+                    onClick={() => setIsLoading(true)}
+                    disabled={isLoading}
+                    className={isLoading ? `btn--loading` : ``}
+                >
+                    {isLoginMode ? 'Login' : 'Sign up'}
+                </button>
             </form>
             {isLoginMode ? (
                 <p className='auth__switcher'>

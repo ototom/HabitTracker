@@ -28,7 +28,6 @@
 .auth__form {
     padding: 2rem;
     flex-grow: 1;
-    text-align: center;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -42,29 +41,11 @@
     color: var(--text-color);
 }
 
-/* TEMPORARY INPUT STYLES */
-/* TODO: CREATE INPUT COMPONENT */
-input[type=text],
-input[type=email],
-input[type=password] {
-    display: block;
-    border: 1px solid hsl(0, 0%, 80%);
-    border-radius: 0.5rem;
-    width: 100%;
-    padding: 1rem;
-}
-
-input[type=text],
-input[type=email],
-input[type=password]:not(:last-of-type) {
-    margin-bottom: 0.5rem;
-}
-
 /* TEMPORARY BUTTON STYLES */
 /* TODO: CREATE BUTTON COMPONENT */
 button {
     padding: 1rem;
-    background: hsl(341, 58%, 46%);
+    background: hsl(213, 100%, 32%);
     border-radius: 0.5rem;
     border: none;
     color: #fff;
@@ -73,4 +54,37 @@ button {
     text-transform: uppercase;
     font-family: var(--heading-font);
     font-weight: 500;
+}
+
+button:disabled {
+    background: rgb(220, 220, 220);
+    color: rgb(132, 132, 132);
+    cursor: initial;
+}
+
+button.btn--loading {
+    position: relative;
+}
+
+button.btn--loading::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f110";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform .2s linear;
+    animation: spinning .8s linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    color: rgb(155, 155, 155);
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -1,0 +1,26 @@
+label {
+    margin: 0.5rem 0;
+    color: rgb(150, 150, 150);
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+    display: block;
+    border: 1px solid hsl(0, 0%, 80%);
+    border-radius: 0.5rem;
+    width: 100%;
+    padding: 1rem;
+}
+
+input[type=text]:not(:last-of-type),
+input[type=email]:not(:last-of-type),
+input[type=password]:not(:last-of-type),
+textarea:not(:last-of-type) {
+    margin-bottom: 0.5rem;
+}
+
+::placeholder {
+    color: rgb(150, 150, 150);
+}

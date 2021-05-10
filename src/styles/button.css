@@ -1,0 +1,45 @@
+button {
+    padding: 1rem;
+    background: hsl(213, 100%, 32%);
+    border-radius: 0.5rem;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    font-family: var(--heading-font);
+    font-weight: 500;
+}
+
+button:disabled {
+    background: rgb(220, 220, 220);
+    color: rgb(132, 132, 132);
+    cursor: initial;
+}
+
+button.btn--loading {
+    position: relative;
+}
+
+button.btn--loading::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f110";
+    display: inline-block;
+    margin-right: 0.5rem;
+    transition: transform .2s linear;
+    animation: spinning .8s linear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    color: rgb(155, 155, 155);
+}
+
+@keyframes spinning {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

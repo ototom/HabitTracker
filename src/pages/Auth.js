@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
+import Button from '../components/shared/Button/Button';
 import Input from '../components/shared/Input/Input';
 import '../styles/auth.css';
 
@@ -41,13 +42,13 @@ const Auth = () => {
                     label='Password:'
                     placeholder='Enter password'
                 />
-                <button
+                <Button
                     onClick={() => setIsLoading(true)}
                     disabled={isLoading}
                     className={isLoading ? `btn--loading` : ``}
                 >
                     {isLoginMode ? 'Login' : 'Sign up'}
-                </button>
+                </Button>
             </form>
             {isLoginMode ? (
                 <p className='auth__switcher'>

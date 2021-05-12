@@ -54,11 +54,15 @@ export const useForm = (
         []
     );
 
+    const setError = (error) =>
+        dispatch({ type: 'SET_ERRORS', payload: { errors: [error] } });
+
     return {
         onInputChange,
         values: formState.values,
         errors: formState.errors,
         clearErrors,
+        setError,
         submitHandler,
     };
 };

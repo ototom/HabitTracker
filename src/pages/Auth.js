@@ -1,35 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import Button from '../components/shared/Button/Button';
 import Input from '../components/shared/Input/Input';
 import '../styles/auth.css';
 import { useForm } from '../hooks/use-form';
+import { authContext } from '../context/auth-context';
 
 const Auth = () => {
     const { mode } = useParams();
     const history = useHistory();
+    const { signIn, signUp } = useContext(authContext);
     const [isLoginMode, setIsLoginMode] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { onInputChange, submitHandler, values, errors, clearErrors } =
-        useForm({
-            initialValues: { mail: '', password: '' },
-            validateRules: {
-                mail: { type: 'EMAIL', req: true },
-                password: { req: true, min: isLoginMode ? null : 6 },
-            },
-            onSubmit: (values) => {
-                setIsLoading(true);
-                clearErrors();
-                if (isLoginMode) {
-                    console.log('LOGIN', values);
-                } else {
-                    console.log('SIGN UP', values);
-                }
-                setTimeout(() => {
+    const {
+        onInputChange,
+        submitHandler,
+        values,
+        errors,
+        clearErrors,
+        setError,
+    } = useForm({
+        initialValues: { mail: '', password: '' },
+        validateRules: {
+            mail: { type: 'EMAIL', req: true },
+            password: { req: true, min: isLoginMode ? null : 6 },
+        },
+        onSubmit: async (values) => {
+            setIsLoading(true);
+            clearErrors();
+            if (isLoginMode) {
+                try {
+                    await signIn(values.mail, values.password);
                     setIsLoading(false);
-                }, 5000);
-            },
-        });
+                    history.push('/');
+                } catch (error) {
+                    setIsLoading(false);
+                    setError(error.message);
+                }
+            } else {
+                try {
+                    await signUp(values.mail, values.password);
+                    setIsLoading(false);
+                    history.push('/auth/sign-in');
+                } catch (error) {
+                    setIsLoading(false);
+                    setError(error.message);
+                }
+            }
+        },
+    });
 
     useEffect(() => {
         clearErrors();

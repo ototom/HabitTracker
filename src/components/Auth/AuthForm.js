@@ -1,5 +1,6 @@
 import Button from '../shared/Button/Button';
 import Input from '../shared/Input/Input';
+import PropTypes from 'prop-types';
 
 const AuthForm = ({
     submitHandler,
@@ -40,6 +41,7 @@ const AuthForm = ({
                 value={values.password}
                 onChange={onInputChange}
             />
+            {/* TODO: add prop isLoading to the button component */}
             <Button
                 disabled={isLoading}
                 className={isLoading ? `btn--loading` : ``}
@@ -48,6 +50,15 @@ const AuthForm = ({
             </Button>
         </form>
     );
+};
+
+AuthForm.propTypes = {
+    submitHandler: PropTypes.func,
+    errors: PropTypes.array,
+    isLoading: PropTypes.bool,
+    isLoginMode: PropTypes.bool,
+    values: PropTypes.object,
+    onInputChange: PropTypes.func,
 };
 
 export default AuthForm;

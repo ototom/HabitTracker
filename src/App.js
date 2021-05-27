@@ -3,7 +3,6 @@ import PrivateRoute from './components/shared/PrivateRoute/PrivateRoute';
 import AuthProvider from './context/auth-context';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
-import NotFound from './pages/NotFound';
 
 function App() {
     return (
@@ -12,12 +11,9 @@ function App() {
                 <Route path='/auth/:mode'>
                     <Auth />
                 </Route>
-                <PrivateRoute path='/' exact>
+                <PrivateRoute path='/'>
                     <Dashboard />
                 </PrivateRoute>
-                <Route>
-                    <NotFound />
-                </Route>
             </Switch>
         </AuthProvider>
     );

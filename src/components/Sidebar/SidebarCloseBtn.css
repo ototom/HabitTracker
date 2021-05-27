@@ -1,0 +1,19 @@
+.sidebar__close-btn {
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    color: inherit;
+    
+    font-size: 1.5rem; 
+
+    position: absolute; 
+    top: 1rem; 
+    right: 1rem;
+}
+
+@media (min-width: 768px) {
+    .sidebar__close-btn {
+        display: none;
+    }
+}

@@ -1,4 +1,4 @@
-button {
+.btn {
     padding: 1rem;
     background: hsl(213, 100%, 32%);
     border-radius: 0.5rem;
@@ -11,17 +11,17 @@ button {
     font-weight: 500;
 }
 
-button:disabled {
+.btn:disabled {
     background: rgb(220, 220, 220);
     color: rgb(132, 132, 132);
     cursor: initial;
 }
 
-button.btn--loading {
+.btn.btn--loading {
     position: relative;
 }
 
-button.btn--loading::before {
+.btn.btn--loading::before {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     content: "\f110";

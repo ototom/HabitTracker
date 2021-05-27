@@ -45,6 +45,21 @@ h5 {
     margin: 0;
 }
 
+button {
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: var(--text-font);
+}
+
+.img-circle {
+    border-radius: 100%;
+    overflow: hidden;
+}
+
 /* TEMPORARY ALERT STYLES */
 /* TODO: ALERT COMPONENT */
 

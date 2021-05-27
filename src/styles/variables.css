@@ -1,7 +1,13 @@
 :root {
     /* COLORS */
+    --color-primary: hsl(213, 100%, 32%);
     --text-color: hsl(226, 72%, 14%);
     --bg-color: hsl(220, 33%, 96%);
+
+    /* SIDEBAR COLORS */
+    --sidebar-bg: hsl(0, 0%, 100%);
+    --link-icon: hsla(226, 72%, 14%, 0.25);
+    --active-link-icon: hsla(226, 72%, 14%, 0.55);
 
     /* FONTS */
     --text-font: 'Open Sans', sans-serif;

@@ -1,0 +1,31 @@
+.sidebar {
+    width: 95%;
+    height: 100%;
+
+    position: fixed;
+    top: 0;
+    left: -95%;
+
+    background: var(--sidebar-bg);
+    
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+@media(max-width: 768px) {
+    .sidebar--is-open {
+        transform: translateX(100%);
+    }
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 300px;
+        left: 0;
+    }
+}

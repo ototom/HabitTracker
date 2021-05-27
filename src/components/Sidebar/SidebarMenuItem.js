@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 const SidebarMenuItem = ({ onClick, exact, to, children }) => {
     const element = to ? (
-        <NavLink to={to} exact={exact}>
+        <NavLink to={to} exact={exact} data-testid='type-link'>
             {children}
         </NavLink>
     ) : (
-        <button onClick={onClick}>{children}</button>
+        <button onClick={onClick} data-testid='type-button'>
+            {children}
+        </button>
     );
 
     return <li>{element}</li>;

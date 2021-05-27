@@ -15,7 +15,10 @@ const Sidebar = ({ isOpen, closeHandler }) => {
     }, [history, closeHandler]);
 
     return (
-        <div className={`sidebar ${isOpen ? 'sidebar--is-open' : ''}`}>
+        <div
+            data-testid='sidebar'
+            className={`sidebar ${isOpen ? 'sidebar--is-open' : ''}`}
+        >
             <SidebarCloseBtn onClick={closeHandler} />
             <UserProfile />
             <SidebarMenu />

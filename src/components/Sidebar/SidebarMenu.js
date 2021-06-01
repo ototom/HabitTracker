@@ -9,7 +9,7 @@ const SidebarMenu = () => {
     return (
         <div className='sidebar__menu'>
             <ul>
-                <SidebarMenuItem to='/' exact>
+                <SidebarMenuItem to='/habits'>
                     <i className='fas fa-home'></i>Home
                 </SidebarMenuItem>
                 <SidebarMenuItem to='/user'>

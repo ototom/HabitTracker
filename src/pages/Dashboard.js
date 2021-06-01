@@ -1,8 +1,11 @@
-import { Route, Switch } from 'react-router';
+import { useCallback, useState } from 'react';
+import { Redirect, Route, Switch } from 'react-router';
+
+import '../styles/dashboard.css';
+
 import Sidebar from '../components/Sidebar/Sidebar';
 import NotFound from './NotFound';
-import '../styles/dashboard.css';
-import { useCallback, useState } from 'react';
+import Habits from './Habits';
 
 const Dashboard = () => {
     const [isSidebarOpen, setisSidebarOpen] = useState(false);
@@ -21,8 +24,9 @@ const Dashboard = () => {
             />
             <div className='content'>
                 <Switch>
-                    <Route path='/' exact>
-                        habits
+                    <Redirect from='/' to='/habits' exact />
+                    <Route path='/habits'>
+                        <Habits />
                     </Route>
                     <Route path='/user'>user settings</Route>
                     <Route path='/cal'>cal</Route>

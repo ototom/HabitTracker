@@ -1,15 +1,19 @@
 import './UserProfile.css';
+import profilePicturePlaceholder from '../../assets/profile-pic.svg';
 
-const UserProfile = () => {
+const UserProfile = ({ displayName, mail, photoURL }) => {
     // TODO: fetch user data from API and display it istead of placeholder
     return (
         <div className='sidebar__user-profile'>
             <div className='img-circle sidebar__user-avatar'>
-                <img src='https://i.pravatar.cc/150?img=12' alt='user avatar' />
+                <img
+                    src={photoURL ? photoURL : profilePicturePlaceholder}
+                    alt='user avatar'
+                />
             </div>
             <div className='sidebar__user-details'>
-                <h3>UserName</h3>
-                <span>demo@demodemo.com</span>
+                <h3>{displayName}</h3>
+                <span>{mail}</span>
             </div>
         </div>
     );

@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import '../styles/auth.css';
+import './Auth.css';
 import { useForm } from '../hooks/use-form';
 import { authContext } from '../context/auth-context';
 import AuthForm from '../components/Auth/AuthForm';
@@ -28,7 +28,7 @@ const Auth = () => {
             }
         } else {
             try {
-                await signUp(values.mail, values.password);
+                await signUp(values.mail, values.password, values.username);
                 setIsLoading(false);
                 history.push('/auth/sign-in');
             } catch (error) {
@@ -46,9 +46,10 @@ const Auth = () => {
         clearErrors,
         setError,
     } = useForm({
-        initialValues: { mail: '', password: '' },
+        initialValues: { mail: '', password: '', username: '' },
         validateRules: {
             mail: { type: 'EMAIL', req: true },
+            username: isLoginMode ? {} : { req: true, min: 3, max: 15 },
             password: { req: true, min: isLoginMode ? null : 6 },
         },
         onSubmit,

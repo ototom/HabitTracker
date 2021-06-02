@@ -21,6 +21,18 @@ const AuthForm = ({
                     ))}
                 </div>
             )}
+            {!isLoginMode && (
+                <Input
+                    type='text'
+                    disabled={isLoading}
+                    id='username'
+                    name='name'
+                    label='Username:'
+                    placeholder='Choose username'
+                    value={values.username}
+                    onChange={onInputChange}
+                />
+            )}
             <Input
                 type='email'
                 disabled={isLoading}

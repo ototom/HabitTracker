@@ -26,8 +26,16 @@ const AuthProvider = ({ children }) => {
     const signIn = (email, password) =>
         auth.signInWithEmailAndPassword(email, password);
 
-    const signUp = (email, password) =>
-        auth.createUserWithEmailAndPassword(email, password);
+    const signUp = (email, password, displayName) =>
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((result) => {
+                result.user.updateProfile({ displayName });
+            })
+            .catch((error) => {
+                // TODO: send notification to the user
+                console.log(error);
+            });
 
     const logout = () => {
         setUser(null);

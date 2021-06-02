@@ -11,6 +11,13 @@
     border-radius: 0.5rem;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
     background: #fff;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.auth__container::-webkit-scrollbar {
+    width: 0;
+    height: 0;
 }
 
 @media (min-width: 768px) {

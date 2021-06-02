@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import AuthForm from '../../components/Auth/AuthForm';
+import AuthForm from './AuthForm';
 
 it('Calls onSubmit fn when the form is filled and the button is clicked', () => {
     const submitHandler = jest.fn((e) => e.preventDefault());

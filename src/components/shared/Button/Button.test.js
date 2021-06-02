@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
-import Button from '../../components/shared/Button/Button';
+import Button from './Button';
 
 it('Displays <Link /> or <button> depending on variant prop', () => {
     const history = createMemoryHistory();

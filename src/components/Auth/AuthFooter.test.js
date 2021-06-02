@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
-import AuthFooter from '../../components/Auth/AuthFooter';
+import AuthFooter from './AuthFooter';
 
 const history = createMemoryHistory();
 const renderWithRouter = (ui) => ({

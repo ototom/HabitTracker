@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 
-import '../styles/dashboard.css';
+import './Dashboard.css';
 
 import Sidebar from '../components/Sidebar/Sidebar';
 import NotFound from './NotFound';

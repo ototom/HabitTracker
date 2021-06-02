@@ -1,8 +1,8 @@
 import { fireEvent, render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
-import Auth from '../../pages/Auth';
-import * as hooks from '../../hooks/use-form';
+import Auth from './Auth';
+import * as hooks from '../hooks/use-form';
 
 it('Clears errors when user changes between login and sign up mode', () => {
     const history = createMemoryHistory();

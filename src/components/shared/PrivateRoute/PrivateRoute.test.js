@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
-import PrivateRoute from '../../components/shared/PrivateRoute/PrivateRoute';
-import { authContext } from '../../context/auth-context';
+import PrivateRoute from './PrivateRoute';
+import { authContext } from '../../../context/auth-context';
 
 it('Shows content if the user exists', () => {
     const history = createMemoryHistory();

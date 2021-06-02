@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import Input from '../../components/shared/Input/Input';
+import Input from './Input';
 
 it('Displays textarea or input depending on "type" prop', () => {
     const { queryByTestId, rerender } = render(<Input type='textarea' />);

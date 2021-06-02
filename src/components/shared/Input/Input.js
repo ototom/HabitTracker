@@ -1,4 +1,4 @@
-import '../../../styles/Forms/input.css';
+import './Input.css';
 import PropTypes from 'prop-types';
 
 const Input = (props) => {

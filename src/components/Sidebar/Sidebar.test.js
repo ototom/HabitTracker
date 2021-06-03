@@ -1,8 +1,15 @@
-import { fireEvent, render } from '@testing-library/react';
+import {
+    fireEvent,
+    render,
+    within,
+    screen,
+    prettyDOM,
+} from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import Sidebar from './Sidebar';
 import SidebarCloseBtn from './SidebarCloseBtn';
+import SidebarMenu from './SidebarMenu';
 import SidebarMenuItem from './SidebarMenuItem';
 
 it('Closes the sidebar when the route changes', () => {
@@ -69,4 +76,27 @@ it('Renders button or link depending on if the address has been passed', () => {
 
     expect(queryByTestId(/type-button/i)).toBeInTheDocument();
     expect(queryByTestId(/type-link/i)).not.toBeInTheDocument();
+});
+it('renders add habit modal when user clicks the button', () => {
+    const root = document.createElement('div');
+    root.setAttribute('id', 'modal-container');
+    document.body.appendChild(root);
+
+    const history = createMemoryHistory();
+    const closeSidebarHandler = jest.fn();
+
+    const { getByText } = render(
+        <Router history={history}>
+            <SidebarMenu to='/' closeSidebarHandler={closeSidebarHandler} />
+        </Router>
+    );
+
+    const showModalBtn = getByText(/Add new habit/i);
+
+    fireEvent.click(showModalBtn);
+
+    const { queryByPlaceholderText } = within(root);
+
+    const formInput = queryByPlaceholderText(/enter habit name/i);
+    expect(formInput).toBeInTheDocument();
 });

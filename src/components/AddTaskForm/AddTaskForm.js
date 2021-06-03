@@ -50,7 +50,7 @@ const AddTaskForm = ({ hideForm }) => {
 
     return ReactDOM.createPortal(
         <div className='add-task-form' ref={modalRef}>
-            <form onSubmit={submitHandler}>
+            <form data-testid='add-habit-form' onSubmit={submitHandler}>
                 <input
                     type='text'
                     name='habitname'

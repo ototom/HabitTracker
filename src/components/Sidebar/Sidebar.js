@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, closeHandler }) => {
                     photoURL={user.photoURL}
                 />
             )}
-            <SidebarMenu />
+            <SidebarMenu closeSidebarHandler={closeHandler} />
         </div>
     );
 };

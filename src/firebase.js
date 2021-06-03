@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const app = firebase.initializeApp({
     apiKey: process.env.REACT_APP_API,
@@ -9,6 +10,10 @@ const app = firebase.initializeApp({
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID,
 });
+
+export const firestore = app.firestore();
+export const getCurrentTimestamp =
+    firebase.firestore.FieldValue.serverTimestamp;
 
 export const auth = app.auth();
 

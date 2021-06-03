@@ -1,5 +1,5 @@
 import { fireEvent, render } from '@testing-library/react';
-import AddTaskForm from './AddTaskForm';
+import AddHabitForm from './AddHabitForm';
 
 let container = document.getElementById('modal-container');
 
@@ -13,14 +13,14 @@ beforeEach(() => {
 
 it('Puts focus on input after render', () => {
     const { getByPlaceholderText } = render(
-        <AddTaskForm hideForm={() => {}} />
+        <AddHabitForm hideForm={() => {}} />
     );
 
     expect(getByPlaceholderText(/enter habit name/i)).toHaveFocus();
 });
 it('Hides the form when user clicks outside of it', () => {
     const hideForm = jest.fn();
-    render(<AddTaskForm hideForm={hideForm} />);
+    render(<AddHabitForm hideForm={hideForm} />);
     expect(hideForm).toHaveBeenCalledTimes(0);
 
     fireEvent.click(document.body);
@@ -28,7 +28,7 @@ it('Hides the form when user clicks outside of it', () => {
 });
 it('Makes the button disabled when the text field is empty', () => {
     const { getByPlaceholderText, getByRole } = render(
-        <AddTaskForm hideForm={() => {}} />
+        <AddHabitForm hideForm={() => {}} />
     );
 
     const btn = getByRole('button');

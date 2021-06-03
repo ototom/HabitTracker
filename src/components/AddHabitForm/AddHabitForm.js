@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { firestore, getCurrentTimestamp } from '../../firebase';
 
-import './AddTaskForm.css';
+import './AddHabitForm.css';
 import { useForm } from '../../hooks/use-form';
 
 const AddTaskForm = ({ hideForm }) => {

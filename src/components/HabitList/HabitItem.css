@@ -1,0 +1,99 @@
+.habit-list__item {
+    /* padding: 2rem 2rem; */
+    display: flex;
+    margin: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(220, 33%, 90%);
+    align-items: center;
+}
+
+.habit-list__item a {
+    flex-grow: 1;
+    padding: 1rem 2rem 1rem 1rem;
+    /* border-bottom: 1px solid hsl(220, 33%, 90%); */
+}
+
+.habit-list__item.checked {
+    color: hsla(226, 72%, 14%, 0.4);
+}
+
+.habit-list__item:hover a {
+    text-decoration: none;
+}
+
+.habit-list__checkbox {
+    margin: 1rem;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.habit-list__checkbox-icon {
+    display: block;
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 2px solid hsl(220, 33%, 80%);
+    border-radius: 100%;
+    position: relative;
+    transition: all 0.15s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.habit-list__checkbox-icon::before {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 0.6rem;
+    opacity: 0;
+    transition: all 0.15s linear;
+    list-style: 1.4rem;
+}
+
+
+
+.habit-list__checkbox-icon:active::before {
+    opacity: 1;
+    color: green;
+}
+
+.habit-list__checkbox-icon:active {
+    border-color: green;
+    background-color: hsla(120, 100%, 25%, 0.201);
+}
+
+.habit-list__checkbox-icon.checked {
+    border-color: green;
+}
+
+.habit-list__checkbox-icon.checked::before {
+    opacity: 1;
+    color: green;
+}
+
+
+@media (min-width: 768px) {
+    .habit-list__item a {
+        padding: 1.5rem 2rem 1.5rem 1.5rem;
+    }
+
+    .habit-list__checkbox {
+        margin: 1.5rem;
+    }
+
+    .habit-list__item:hover {
+        background: hsl(220, 33%, 94%);
+    }
+
+    .habit-list__item--active {
+        background: hsl(220, 33%, 93%);
+    }
+
+    .habit-list__checkbox-icon:hover {
+        border: 2px solid hsl(220, 33%, 75%);
+        background: hsl(220, 33%, 90%);
+    }
+
+    .habit-list__checkbox-icon.checked:hover {
+        border-color: green;
+    }
+}

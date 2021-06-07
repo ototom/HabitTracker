@@ -4,6 +4,7 @@
 *::before,
 *::after {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.04);
 }
 
 html {
@@ -15,6 +16,7 @@ body {
     background: var(--bg-color);
     font-family: var(--text-font);
     line-height: 1.5;
+    margin: 0;
 }
 
 a {
@@ -35,6 +37,8 @@ a.disabled {
     pointer-events: none;
     color: rgba(0, 0, 0, 0.3);
 }
+
+
 
 h1,
 h2,

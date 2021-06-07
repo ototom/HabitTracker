@@ -1,0 +1,39 @@
+.empty-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: -10;
+    width: 100%;
+}
+
+.empty-list h3 {
+    font-size: 1.1rem;
+}
+
+.empty-list h4 {
+    font-size: 0.8rem;
+    color: hsl(226, 30%, 60%);
+}
+
+
+.empty-list img {
+    width: 80%;
+    max-width: 400px;
+    height: auto;
+}
+
+@media (min-width: 768px) {
+    .empty-list h3 {
+        font-size: 1.5rem;
+    }
+
+    .empty-list h4 {
+        font-size: 1rem;
+        color: hsl(226, 30%, 60%);
+    }
+}

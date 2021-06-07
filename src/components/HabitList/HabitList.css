@@ -1,0 +1,44 @@
+.habit-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.habit-list__header {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+
+
+.habit-list__header i {
+    margin-right: 1rem;
+}
+
+.empty-list-placeholder {
+    padding: 1rem;
+    margin: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(220, 33%, 90%);
+    color: hsla(226, 72%, 14%, 0.6);
+}
+
+@media (min-width: 768px) {
+    .habit-list__header:hover {
+        background: hsl(220, 33%, 94%);
+    }
+
+    .empty-list-placeholder {
+        padding: 1.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .habit-list {
+        margin-right: 400px;
+    }
+}

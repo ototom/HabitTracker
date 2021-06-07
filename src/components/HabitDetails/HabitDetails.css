@@ -11,6 +11,7 @@
     box-shadow: 0 0 5rem rgba(0, 0, 0, 0.4);
     border-radius: 0.5rem;
     padding: 2rem;
+    z-index: 105;
 }
 
 .details::-webkit-scrollbar {

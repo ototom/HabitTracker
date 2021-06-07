@@ -1,0 +1,45 @@
+.datepicker {
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0;
+}
+
+.datepicker__controls {
+    border-radius: 0.5rem;
+    border: 1px solid hsl(220, 33%, 90%);
+    /* padding: 0.5rem 1rem; */
+}
+
+.datepicker__btn-date {
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+.datepicker__btn--left {
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+}
+
+.datepicker__btn--right {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+}
+
+.datepicker__return-btn {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(220, 33%, 90%);
+}
+
+@media (min-width: 768px) {
+    button:hover {
+        background: hsl(220, 33%, 94%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .datepicker {
+        margin-right: 400px;
+    }
+}

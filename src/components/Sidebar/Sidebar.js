@@ -7,7 +7,7 @@ import UserProfile from './UserProfile';
 import './Sidebar.css';
 import { authContext } from '../../context/auth-context';
 
-const Sidebar = ({ isOpen, closeHandler }) => {
+const Sidebar = ({ isOpen, closeHandler, addNewHabitHandler }) => {
     const { user } = useContext(authContext);
     const history = useHistory();
 
@@ -28,7 +28,10 @@ const Sidebar = ({ isOpen, closeHandler }) => {
                     photoURL={user.photoURL}
                 />
             )}
-            <SidebarMenu closeSidebarHandler={closeHandler} />
+            <SidebarMenu
+                closeSidebarHandler={closeHandler}
+                addNewHabitHandler={addNewHabitHandler}
+            />
         </div>
     );
 };

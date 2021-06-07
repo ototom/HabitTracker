@@ -7,7 +7,7 @@ import AddHabitForm from '../AddHabitForm/AddHabitForm';
 
 import './SidebarMenu.css';
 
-const SidebarMenu = ({ closeSidebarHandler }) => {
+const SidebarMenu = ({ closeSidebarHandler, addNewHabitHandler }) => {
     const { logout } = useContext(authContext);
     const [isAddTaskMode, setIsAddTaskMode] = useState(false);
 
@@ -36,7 +36,12 @@ const SidebarMenu = ({ closeSidebarHandler }) => {
                     </SidebarMenuItem>
                 </ul>
             </div>
-            {isAddTaskMode && <AddHabitForm hideForm={hideAddTaskForm} />}
+            {isAddTaskMode && (
+                <AddHabitForm
+                    addNewHabitHandler={addNewHabitHandler}
+                    hideForm={hideAddTaskForm}
+                />
+            )}
         </>
     );
 };

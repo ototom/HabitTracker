@@ -1,10 +1,4 @@
-import {
-    fireEvent,
-    render,
-    within,
-    screen,
-    prettyDOM,
-} from '@testing-library/react';
+import { fireEvent, render, within } from '@testing-library/react';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import Sidebar from './Sidebar';

@@ -12,8 +12,13 @@ const app = firebase.initializeApp({
 });
 
 export const firestore = app.firestore();
+
 export const getCurrentTimestamp =
     firebase.firestore.FieldValue.serverTimestamp;
+export const arrayRemove = (date) =>
+    firebase.firestore.FieldValue.arrayRemove(date);
+export const arrayUnion = (date) =>
+    firebase.firestore.FieldValue.arrayUnion(date);
 
 export const auth = app.auth();
 

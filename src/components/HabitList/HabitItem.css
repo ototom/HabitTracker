@@ -1,5 +1,5 @@
+/* GENERAL STYLES */
 .habit-list__item {
-    /* padding: 2rem 2rem; */
     display: flex;
     margin: 0.5rem 1rem;
     border-radius: 0.5rem;
@@ -10,7 +10,6 @@
 .habit-list__item a {
     flex-grow: 1;
     padding: 1rem 2rem 1rem 1rem;
-    /* border-bottom: 1px solid hsl(220, 33%, 90%); */
 }
 
 .habit-list__item.checked {
@@ -21,6 +20,7 @@
     text-decoration: none;
 }
 
+/* CHECKBOX */
 .habit-list__checkbox {
     margin: 1rem;
     -webkit-tap-highlight-color: transparent;
@@ -49,28 +49,26 @@
     list-style: 1.4rem;
 }
 
-
-
 .habit-list__checkbox-icon:active::before {
     opacity: 1;
-    color: green;
+    color: hsl(120, 100%, 25%);
 }
 
 .habit-list__checkbox-icon:active {
     border-color: green;
-    background-color: hsla(120, 100%, 25%, 0.201);
+    background-color: hsla(120, 100%, 25%, 0.2);
 }
 
 .habit-list__checkbox-icon.checked {
-    border-color: green;
+    border-color: hsl(120, 100%, 25%);
 }
 
 .habit-list__checkbox-icon.checked::before {
     opacity: 1;
-    color: green;
+    color: hsl(120, 100%, 25%);
 }
 
-
+/* MEDIA QUERIES */
 @media (min-width: 768px) {
     .habit-list__item a {
         padding: 1.5rem 2rem 1.5rem 1.5rem;
@@ -94,6 +92,6 @@
     }
 
     .habit-list__checkbox-icon.checked:hover {
-        border-color: green;
+        border-color: hsl(120, 100%, 25%);
     }
 }

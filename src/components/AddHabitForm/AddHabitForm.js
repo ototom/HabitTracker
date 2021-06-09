@@ -1,41 +1,19 @@
 import ReactDOM from 'react-dom';
 import { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { firestore, getCurrentTimestamp } from '../../firebase';
 
 import './AddHabitForm.css';
 import { useForm } from '../../hooks/use-form';
-import { authContext } from '../../context/auth-context';
+import { habitsContext } from '../../context/habits-context';
 
-const AddHabitForm = ({ hideForm, addNewHabitHandler }) => {
-    const { user } = useContext(authContext);
+const AddHabitForm = ({ hideForm }) => {
+    const { addNewHabit } = useContext(habitsContext);
     const { values, onInputChange, submitHandler } = useForm({
         initialValues: { habitname: '' },
         validateRules: { habitname: { req: true } },
         onSubmit: (values) => {
-            const newHabit = {
-                name: values.habitname,
-                checkedDays: [],
-                createdAt: getCurrentTimestamp(),
-                user: user.uid,
-            };
-
-            firestore
-                .collection('habits')
-                .add(newHabit)
-                .then((data) => {
-                    // TODO: show notification on success
-                    hideForm();
-                    addNewHabitHandler({
-                        id: data.id,
-                        ...newHabit,
-                        user: user.id,
-                    });
-                })
-                .catch((error) => {
-                    //TODO: show notification on error
-                    console.log(error);
-                });
+            addNewHabit(values.habitname);
+            hideForm();
         },
     });
 

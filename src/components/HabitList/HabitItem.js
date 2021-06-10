@@ -15,6 +15,7 @@ const HabitItem = ({ habit, onCheckboxClick }) => {
             className={`habit-list__item ${
                 selectedHabitId === habit.id ? 'habit-list__item--active' : ''
             } ${habit.isCompleted ? 'checked' : ''}`}
+            data-testid='habit-item'
         >
             <button className='habit-list__checkbox' onClick={toggleHabitState}>
                 <span

@@ -12,6 +12,7 @@ const DatePicker = () => {
                 <button
                     onClick={subDay}
                     className='datepicker__btn datepicker__btn--left'
+                    data-testid='prev-btn'
                 >
                     <i className='fas fa-chevron-left'></i>
                 </button>
@@ -19,6 +20,7 @@ const DatePicker = () => {
                 <button
                     onClick={addDay}
                     className='datepicker__btn datepicker__btn--right'
+                    data-testid='next-btn'
                 >
                     <i className='fas fa-chevron-right'></i>
                 </button>

@@ -1,0 +1,97 @@
+.calendar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    color: var(--habit-details-text-light);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.calendar__header div {
+    width: calc((238px / 7) - 0.5rem);
+}
+
+.calendar__controls {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.calendar__controls button {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.calendar__btns-container {
+    margin-left: auto;
+}
+
+.calendar__week {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    user-select: none;
+}
+
+.calendar__day {
+    border: 2px solid transparent;
+    background: transparent;
+    width: calc((238px / 7) - 0.5rem);
+    height: calc((238px / 7) - 0.5rem);
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.calendar__day.blocked {
+    color: var(--habit-details-text-light);
+    cursor: not-allowed;
+}
+.calendar__day.blocked:hover {
+    background: transparent;
+}
+
+
+.calendar__day.today {
+    font-weight: bold;
+}
+
+.calendar__day.checked {
+    background: hsl(220, 33%, 85%);
+    border-color: hsl(220, 33%, 90%);
+    font-weight: bold;
+}
+
+.calendar__day:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+@media (min-width: 385px) {
+    .calendar__day {
+        width: calc((340px / 7) - 0.5rem);
+        height: calc((340px / 7) - 0.5rem);
+        border: 3px solid transparent;
+    }
+
+    .calendar__header div {
+        width: calc((340px / 7) - 0.5rem);
+    }
+}
+
+@media (min-width: 768px) {
+    .calendar__day:hover {
+        background: hsl(220, 33%, 90%);
+    }
+
+    .calendar__controls button:hover {
+        background: hsl(220, 33%, 90%);
+    }
+}

@@ -14,7 +14,7 @@ const Habits = () => {
 
     return (
         <>
-            <DatePicker />
+            {habits.length > 0 && <DatePicker />}
             {habits.length === 0 ? (
                 <EmptyHabitList />
             ) : (

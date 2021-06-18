@@ -11,14 +11,32 @@
     font-weight: 500;
 }
 
+.btn i {
+    margin-right: 0.5rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .btn:disabled {
     background: rgb(220, 220, 220);
     color: rgb(132, 132, 132);
     cursor: initial;
 }
 
+.btn--neutral {
+    background: rgb(213, 213, 213);
+}
+
+.btn--danger {
+    background: hsl(6, 78%, 57%);
+}
+
 .btn.btn--loading {
     position: relative;
+}
+
+.btn.btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem
 }
 
 .btn.btn--loading::before {
@@ -34,6 +52,21 @@
     color: rgb(155, 155, 155);
 }
 
+.btn--icon-only {
+    width: 50px;
+    height: 50px;
+}
+
+.btn--icon-only i {
+    margin-right: 0;
+    color: inherit;
+
+}
+
+.btn--rounded {
+    border-radius: 100%;
+}
+
 @keyframes spinning {
     0% {
         transform: rotate(0deg);
@@ -41,5 +74,23 @@
 
     100% {
         transform: rotate(360deg);
+    }
+}
+
+@media (min-width: 768px) {
+    .btn:hover {
+        background: hsl(213, 100%, 26%);
+    }
+
+    .btn:hover i {
+        color: #fff;
+    }
+
+    .btn--neutral:hover {
+        background: rgb(201, 201, 201);
+    }
+
+    .btn--danger:hover {
+        background: hsl(6, 78%, 51%)
     }
 }

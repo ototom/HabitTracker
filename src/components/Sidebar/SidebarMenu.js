@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { authContext } from '../../context/auth-context';
 
 import SidebarMenuItem from './SidebarMenuItem';
-import AddHabitForm from '../AddHabitForm/AddHabitForm';
+import HabitForm from '../HabitForm/HabitForm';
 
 import './SidebarMenu.css';
 
@@ -37,7 +37,7 @@ const SidebarMenu = ({ closeSidebarHandler, addNewHabitHandler }) => {
                 </ul>
             </div>
             {isAddTaskMode && (
-                <AddHabitForm
+                <HabitForm
                     addNewHabitHandler={addNewHabitHandler}
                     hideForm={hideAddTaskForm}
                 />

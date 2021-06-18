@@ -1,5 +1,11 @@
 import { isSameDay } from 'date-fns';
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useEffect,
+    useReducer,
+} from 'react';
 import {
     arrayRemove,
     arrayUnion,
@@ -14,6 +20,8 @@ export const ACTION_TYPES = {
     addNew: 'ADD_NEW',
     checkHabit: 'CHECK_HABIT',
     uncheckHabit: 'UNCHECK_HABIT',
+    deleteHabit: 'DELETE_HABIT',
+    updateHabit: 'UPDATE_HABIT',
 };
 
 export const habitsContext = createContext({
@@ -60,6 +68,25 @@ const habitsReducer = (state, action) => {
             );
 
             copyState[habitIndex].checkedDays.splice(checkedDayIndex, 1);
+
+            return copyState;
+        }
+        case ACTION_TYPES.deleteHabit: {
+            const copyState = [...state];
+            const habitIndex = copyState.findIndex(
+                (habit) => habit.id === action.payload
+            );
+            copyState.splice(habitIndex, 1);
+
+            return copyState;
+        }
+        case ACTION_TYPES.updateHabit: {
+            const copyState = [...state];
+            const habitIndex = copyState.findIndex(
+                (habit) => habit.id === action.payload.id
+            );
+
+            copyState[habitIndex].name = action.payload.name;
 
             return copyState;
         }
@@ -171,6 +198,50 @@ const HabitsProvider = ({ children }) => {
         return newHabits;
     };
 
+    const getHabitById = useCallback(
+        (id) => {
+            return habits.filter((habit) => habit.id === id)[0];
+        },
+        [habits]
+    );
+
+    const deleteHabit = (id) => {
+        firestore
+            .collection('habits')
+            .doc(id)
+            .delete()
+            .then(() => {
+                // TODO: Push notification on success
+                console.log('SUCCESS');
+            })
+            .catch((error) => {
+                // TODO: push notitication on error
+                console.error('error');
+            });
+        dispatch({ type: ACTION_TYPES.deleteHabit, payload: id });
+    };
+
+    const editHabit = (value, id) => {
+        firestore
+            .collection('habits')
+            .doc(id)
+            .update({
+                name: value,
+            })
+            .then(() => {
+                // TODO: push notification
+                console.log('UPDATED');
+            })
+            .catch(() => {
+                // TODO: push notification
+                console.log('UPDATE ERROR');
+            });
+        dispatch({
+            type: ACTION_TYPES.updateHabit,
+            payload: { name: value, id },
+        });
+    };
+
     return (
         <habitsContext.Provider
             value={{
@@ -179,6 +250,9 @@ const HabitsProvider = ({ children }) => {
                 checkHabit,
                 uncheckHabit,
                 getDataByDate,
+                getHabitById,
+                deleteHabit,
+                editHabit,
             }}
         >
             {children}

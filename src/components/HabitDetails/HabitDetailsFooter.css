@@ -1,0 +1,8 @@
+.details__footer {
+    margin-top: auto;
+    text-align: right;
+}
+
+.details__footer button:not(:last-child) {
+    margin-right: 1rem;
+}

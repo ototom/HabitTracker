@@ -79,3 +79,13 @@ button {
     color: hsl(6, 79%, 74%);
     background-color: hsl(4, 81%, 96%);
 }
+
+.backdrop {
+    height: 100vh;
+    background:hsla(0, 0%, 0%, 0.1);
+    z-index: 115;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}

@@ -1,0 +1,29 @@
+.details__stats-data-wrapper {
+    border-radius: 0.5rem;
+    border: 1px solid var(--widget-border-color);
+}
+
+.details__stats-data-row {
+    display: flex;
+}
+
+.details__stats-data-row:not(:last-child) {
+    border-bottom: 1px solid var(--widget-border-color);
+}
+
+.details__stats-data-col {
+    padding: 1rem 2rem;
+}
+
+.details__stats-data-col:last-child {
+    flex-basis: 100px;
+    text-align: center;
+}
+
+.details__stats-data-col.move-right {
+    margin-left: auto;
+}
+
+.details__stats-data-col:last-child {
+    border-left: 1px solid var(--widget-border-color);
+}

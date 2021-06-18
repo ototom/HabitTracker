@@ -9,6 +9,11 @@
     --link-icon: hsla(226, 72%, 14%, 0.25);
     --active-link-icon: hsla(226, 72%, 14%, 0.55);
 
+    /* HABIT DETAILS */
+    --habit-details-bg: hsl(220, 33%, 93%);
+    --widget-border-color: hsl(220, 33%, 85%);
+    --habit-details-text-light: hsl(220, 33%, 70%);
+
     /* FONTS */
     --text-font: 'Open Sans', sans-serif;
     --heading-font: 'Montserrat', sans-serif;

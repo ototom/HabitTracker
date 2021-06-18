@@ -1,0 +1,37 @@
+.confirm {
+    z-index: 120;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+
+    transform: translate(-50%,-50%);
+}
+
+.confirm__heading {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.confirm__content {
+    padding: 2rem;
+}
+
+.confirm__footer {
+    padding: 1rem 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: right;
+}
+
+.confirm__footer button {
+    margin: 0;
+}
+
+.confirm__footer button:not(:last-child) {
+    margin-right: 0.5rem;
+}

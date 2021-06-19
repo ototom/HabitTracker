@@ -1,0 +1,57 @@
+.notification {
+    padding: 1rem;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.notification-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 135;
+}
+
+.notification__close-button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.notification__close-button:hover {
+    color: #fff;
+    background: transparent;
+}
+
+.notification__info {
+    background: #3498db;
+    color: #ebf5fb;
+}
+
+.notification__error {
+    background: #cb4335;
+    color: #fdedec;
+}
+
+.notification__success {
+    background: #28b463;
+    color: #eafaf1;
+}
+
+.notification__warning {
+    background: #d4ac0d;
+    color: #fef9e7;
+}
+
+@media (min-width: 768px) {
+    .notification {
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        margin: 5px auto;
+        border-bottom: none;
+        max-width: 500px;
+    }
+}

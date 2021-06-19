@@ -7,6 +7,7 @@ import {
     useReducer,
     useState,
 } from 'react';
+import { notificationTypes } from '../components/Notifications/NotificationService';
 import {
     arrayRemove,
     arrayUnion,
@@ -15,6 +16,7 @@ import {
 } from '../firebase';
 import { authContext } from './auth-context';
 import { dateContext } from './date-context';
+import { notificationContext } from './notification-context';
 
 export const ACTION_TYPES = {
     setHabits: 'SET_HABITS',
@@ -100,6 +102,7 @@ const habitsReducer = (state, action) => {
 const HabitsProvider = ({ children }) => {
     const { date } = useContext(dateContext);
     const { user } = useContext(authContext);
+    const { createNotification } = useContext(notificationContext);
     const [isLoading, setIsLoading] = useState(false);
     const [habits, dispatch] = useReducer(habitsReducer, []);
 
@@ -115,7 +118,6 @@ const HabitsProvider = ({ children }) => {
             .collection('habits')
             .add(newHabit)
             .then((data) => {
-                // TODO: show notification on success
                 dispatch({
                     type: ACTION_TYPES.addNew,
                     payload: {
@@ -124,11 +126,14 @@ const HabitsProvider = ({ children }) => {
                         user: user.id,
                     },
                 });
+                createNotification(
+                    notificationTypes.SUCCESS,
+                    'New habit has been added'
+                );
                 setIsLoading(false);
             })
             .catch((error) => {
-                //TODO: show notification on error
-                console.log(error);
+                createNotification(notificationTypes.ERROR, error.message);
                 setIsLoading(false);
             });
     };
@@ -215,12 +220,18 @@ const HabitsProvider = ({ children }) => {
             .doc(id)
             .delete()
             .then(() => {
-                // TODO: Push notification on success
-                console.log('SUCCESS');
+                createNotification(
+                    notificationTypes.INFO,
+                    'Habit has been successfully deleted',
+                    true
+                );
             })
             .catch((error) => {
-                // TODO: push notitication on error
-                console.error('error');
+                createNotification(
+                    notificationTypes.ERROR,
+                    error.message,
+                    true
+                );
             });
         dispatch({ type: ACTION_TYPES.deleteHabit, payload: id });
     };
@@ -233,12 +244,18 @@ const HabitsProvider = ({ children }) => {
                 name: value,
             })
             .then(() => {
-                // TODO: push notification
-                console.log('UPDATED');
+                createNotification(
+                    notificationTypes.INFO,
+                    'Habit has been changed',
+                    true
+                );
             })
-            .catch(() => {
-                // TODO: push notification
-                console.log('UPDATE ERROR');
+            .catch((error) => {
+                createNotification(
+                    notificationTypes.ERROR,
+                    error.message,
+                    true
+                );
             });
         dispatch({
             type: ACTION_TYPES.updateHabit,

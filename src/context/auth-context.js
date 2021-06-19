@@ -1,6 +1,8 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, storage } from '../firebase';
 import firebase from 'firebase/app';
+import { notificationContext } from './notification-context';
+import { notificationTypes } from '../components/Notifications/NotificationService';
 
 export const authContext = createContext({
     user: null,
@@ -14,6 +16,7 @@ export const authContext = createContext({
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
+    const { createNotification } = useContext(notificationContext);
     const [uploadAvatarProgress, setUploadAvatarProgress] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -42,11 +45,16 @@ const AuthProvider = ({ children }) => {
         auth
             .createUserWithEmailAndPassword(email, password)
             .then((result) => {
-                result.user.updateProfile({ displayName });
+                return result.user.updateProfile({ displayName });
+            })
+            .then(() => {
+                createNotification(
+                    notificationTypes.SUCCESS,
+                    'User has been created'
+                );
             })
             .catch((error) => {
-                // TODO: send notification to the user
-                console.log(error);
+                createContext(notificationTypes.ERROR, error.message);
             });
 
     const logout = () => {
@@ -58,12 +66,19 @@ const AuthProvider = ({ children }) => {
         auth.currentUser
             .updateProfile(updatedProfile)
             .then(() => {
-                // TODO: push notification
+                createNotification(
+                    notificationTypes.INFO,
+                    'Profile has been updated',
+                    true
+                );
                 setUser((prevUser) => ({ ...prevUser, ...updatedProfile }));
             })
             .catch((error) => {
-                // TODO: push notification
-                console.log(error);
+                createNotification(
+                    notificationTypes.ERROR,
+                    error.message,
+                    true
+                );
             });
     };
 
@@ -80,7 +95,10 @@ const AuthProvider = ({ children }) => {
 
             if (oldValues.password && newValues.password) {
                 await auth.currentUser.updatePassword(newValues.password);
-                // TODO: push notification
+                createNotification(
+                    notificationTypes.INFO,
+                    'Profile has been updated'
+                );
             }
 
             if (oldValues.password && newValues.email) {
@@ -89,7 +107,10 @@ const AuthProvider = ({ children }) => {
                     ...prevUser,
                     email: newValues.email,
                 }));
-                // TODO: push notification
+                createNotification(
+                    notificationTypes.INFO,
+                    'Profile has been updated'
+                );
             }
         } catch (error) {
             return error.message;
@@ -111,8 +132,7 @@ const AuthProvider = ({ children }) => {
                 );
             },
             (error) => {
-                // TODO: push notification
-                console.log(error);
+                createNotification(notificationTypes.ERROR, error.message);
             },
             () => {
                 uploadTask.snapshot.ref.getDownloadURL().then((url) => {
@@ -126,6 +146,10 @@ const AuthProvider = ({ children }) => {
                     }));
                     setUploadAvatarProgress(null);
                     onCompleteUpload();
+                    createNotification(
+                        notificationTypes.INFO,
+                        'Avatar has been set'
+                    );
                 });
             }
         );

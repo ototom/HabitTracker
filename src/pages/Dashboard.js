@@ -11,6 +11,7 @@ import DateProvider from '../context/date-context';
 import MobileTopBar from '../components/MobileTopBar/MobileTopBar';
 import Settings from './Settings';
 import SplashScreen from '../components/SplashScreen/SplashScreen';
+import NotificationService from '../components/Notifications/NotificationService';
 
 const Dashboard = () => {
     const [isSidebarOpen, setisSidebarOpen] = useState(false);
@@ -41,6 +42,7 @@ const Dashboard = () => {
                     </Switch>
                 </div>
                 <SplashScreen />
+                <NotificationService />
             </HabitsProvider>
         </DateProvider>
     );

@@ -9,6 +9,7 @@ import Habits from './Habits';
 import HabitsProvider from '../context/habits-context';
 import DateProvider from '../context/date-context';
 import MobileTopBar from '../components/MobileTopBar/MobileTopBar';
+import Settings from './Settings';
 
 const Dashboard = () => {
     const [isSidebarOpen, setisSidebarOpen] = useState(false);
@@ -30,7 +31,9 @@ const Dashboard = () => {
                         <Route path='/habits'>
                             <Habits />
                         </Route>
-                        <Route path='/user'>user settings</Route>
+                        <Route path='/user'>
+                            <Settings />
+                        </Route>
                         <Route>
                             <NotFound />
                         </Route>

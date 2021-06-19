@@ -8,21 +8,21 @@ export const validate = (values = {}, rules = {}) => {
         if (rules[value]?.req === true && !values[value]) {
             errors.push(`${value} field is required`);
         } else if (
-            rules[value].min &&
+            rules[value]?.min &&
             values[value].length < rules[value]?.min
         ) {
             errors.push(
                 `${value} field must contain at least ${rules[value].min} characters`
             );
         } else if (
-            rules[value].max &&
+            rules[value]?.max &&
             values[value].length > rules[value]?.max
         ) {
             errors.push(
                 `${value} field must have max ${rules[value].max} characters`
             );
         } else if (
-            rules[value].type &&
+            rules[value]?.type &&
             rules[value].type === 'EMAIL' &&
             !emailPattern.test(String(values[value]).toLowerCase())
         ) {

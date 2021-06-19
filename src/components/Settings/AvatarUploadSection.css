@@ -1,0 +1,20 @@
+.file__preview {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background: var(--habit-details-bg);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file__preview img {
+    object-fit: cover;
+}
+
+.file__preview-placeholder {
+    text-align: center;
+    padding: 1rem;
+    color: rgba(0, 0, 0, 0.3);
+}

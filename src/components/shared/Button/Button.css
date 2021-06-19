@@ -1,8 +1,9 @@
 .btn {
-    padding: 1rem;
+    padding: 0.7rem;
+    font-size: 0.9rem;
     background: hsl(213, 100%, 32%);
+    border: 2px solid hsl(213, 100%, 32%);
     border-radius: 0.5rem;
-    border: none;
     color: #fff;
     cursor: pointer;
     margin-top: 1rem;
@@ -18,16 +19,24 @@
 
 .btn:disabled {
     background: rgb(220, 220, 220);
+    border-color: rgb(220, 220, 220);
     color: rgb(132, 132, 132);
     cursor: initial;
 }
 
+.btn:disabled:hover {
+    background: rgb(220, 220, 220);
+    color: rgb(132, 132, 132);
+}
+
 .btn--neutral {
     background: rgb(213, 213, 213);
+    border-color: rgb(213, 213, 213);
 }
 
 .btn--danger {
     background: hsl(6, 78%, 57%);
+    border-color: hsl(6, 78%, 57%);
 }
 
 .btn.btn--loading {
@@ -63,6 +72,19 @@
 
 }
 
+.btn--outline {
+    background: transparent;
+    color: hsl(213, 100%, 32%);
+}
+
+.btn--danger.btn--outline {
+    color: hsl(6, 78%, 51%)
+}
+
+.btn--neutral.btn--outline {
+    color: rgb(132, 132, 132);
+}
+
 .btn--rounded {
     border-radius: 100%;
 }
@@ -92,5 +114,9 @@
 
     .btn--danger:hover {
         background: hsl(6, 78%, 51%)
+    }
+
+    .btn--outline:hover {
+        color: #fff;
     }
 }

@@ -5,6 +5,7 @@ import {
     useContext,
     useEffect,
     useReducer,
+    useState,
 } from 'react';
 import {
     arrayRemove,
@@ -99,7 +100,7 @@ const habitsReducer = (state, action) => {
 const HabitsProvider = ({ children }) => {
     const { date } = useContext(dateContext);
     const { user } = useContext(authContext);
-
+    const [isLoading, setIsLoading] = useState(false);
     const [habits, dispatch] = useReducer(habitsReducer, []);
 
     const addNewHabit = (habitName) => {
@@ -109,7 +110,7 @@ const HabitsProvider = ({ children }) => {
             createdAt: getCurrentTimestamp(),
             user: user.uid,
         };
-
+        setIsLoading(true);
         firestore
             .collection('habits')
             .add(newHabit)
@@ -123,10 +124,12 @@ const HabitsProvider = ({ children }) => {
                         user: user.id,
                     },
                 });
+                setIsLoading(false);
             })
             .catch((error) => {
                 //TODO: show notification on error
                 console.log(error);
+                setIsLoading(false);
             });
     };
 
@@ -153,7 +156,7 @@ const HabitsProvider = ({ children }) => {
     useEffect(() => {
         const fetchHabits = () => {
             if (!user) return;
-
+            setIsLoading(true);
             firestore
                 .collection('habits')
                 .where('user', '==', user.uid)
@@ -175,6 +178,7 @@ const HabitsProvider = ({ children }) => {
                         type: ACTION_TYPES.setHabits,
                         payload: habitsArray,
                     });
+                    setIsLoading(false);
                 });
         };
 
@@ -253,6 +257,7 @@ const HabitsProvider = ({ children }) => {
                 getHabitById,
                 deleteHabit,
                 editHabit,
+                isLoading,
             }}
         >
             {children}

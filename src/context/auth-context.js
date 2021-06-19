@@ -15,21 +15,28 @@ export const authContext = createContext({
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState();
     const [uploadAvatarProgress, setUploadAvatarProgress] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true);
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
                 setUser(user);
             } else {
                 setUser(null);
             }
+            setIsLoading(false);
         });
 
         return () => unsubscribe();
     }, []);
 
-    const signIn = (email, password) =>
-        auth.signInWithEmailAndPassword(email, password);
+    const signIn = (email, password) => {
+        setIsLoading(true);
+        return auth
+            .signInWithEmailAndPassword(email, password)
+            .finally(() => setIsLoading(false));
+    };
 
     const signUp = (email, password, displayName) =>
         auth
@@ -135,6 +142,7 @@ const AuthProvider = ({ children }) => {
                 updateAvatar,
                 uploadAvatarProgress,
                 updateSensitiveData,
+                isLoading,
             }}
         >
             {children}

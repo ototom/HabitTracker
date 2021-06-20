@@ -2,6 +2,7 @@ import { useForm } from '../../hooks/use-form';
 import Button from '../shared/Button/Button';
 import Input from '../shared/Input/Input';
 import PropTypes from 'prop-types';
+import Alert from '../shared/Alert/Alert';
 
 const PersonalDetailsSection = ({ user, updateProfile }) => {
     const { values, onInputChange, errors, submitHandler } = useForm({
@@ -16,15 +17,7 @@ const PersonalDetailsSection = ({ user, updateProfile }) => {
         <div className='settings__section'>
             <form onSubmit={submitHandler}>
                 <h3>Personal details</h3>
-                {errors.length > 0 && (
-                    // TODO: CREATE ALERT COMPONENT
-                    <div className='alert alert--red'>
-                        There are following errors: <br />
-                        {errors.map((error, i) => (
-                            <li key={i}>{error}</li>
-                        ))}
-                    </div>
-                )}
+                <Alert errors={errors} />
                 <Input
                     type='text'
                     name='username'

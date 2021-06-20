@@ -1,6 +1,7 @@
 import Button from '../shared/Button/Button';
 import Input from '../shared/Input/Input';
 import PropTypes from 'prop-types';
+import Alert from '../shared/Alert/Alert';
 
 const AuthForm = ({
     submitHandler,
@@ -12,15 +13,7 @@ const AuthForm = ({
 }) => {
     return (
         <form className='auth__form' onSubmit={submitHandler}>
-            {errors.length > 0 && (
-                // TODO: CREATE ALERT COMPONENT
-                <div className='alert alert--red'>
-                    There are following errors: <br />
-                    {errors.map((error, i) => (
-                        <li key={i}>{error}</li>
-                    ))}
-                </div>
-            )}
+            <Alert errors={errors} />
             {!isLoginMode && (
                 <Input
                     type='text'

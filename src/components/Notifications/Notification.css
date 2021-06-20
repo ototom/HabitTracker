@@ -47,11 +47,15 @@
 }
 
 @media (min-width: 768px) {
+    .notification-wrapper {
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 500px;
+    }
     .notification {
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         margin: 5px auto;
         border-bottom: none;
-        max-width: 500px;
     }
 }

@@ -2,17 +2,36 @@ import { Link } from 'react-router-dom';
 import './Button.css';
 import PropTypes from 'prop-types';
 
-const Button = ({ variant, onClick, to, className, ...props }) => {
-    // TODO: add props like "color" and "isLoading" to the component
-    // TODO: create object with all the options available for colors, sizes ect.
+export const BUTTON_OPTIONS = {
+    small: 'btn--small',
+    neutral: 'btn--neutral',
+    danger: 'btn--danger',
+    outline: 'btn--outline',
+};
+
+const Button = ({
+    variant,
+    onClick,
+    to,
+    className,
+    isLoading,
+    options = [],
+    ...props
+}) => {
     const button =
         variant === 'link' ? (
-            <Link {...props} to={to} className={`btn ${className}`} />
+            <Link
+                {...props}
+                to={to}
+                className={`btn ${className || ''} ${options.join(' ')} `}
+            />
         ) : (
             <button
                 {...props}
                 onClick={onClick}
-                className={`btn ${className}`}
+                className={`btn ${isLoading ? 'btn--loading' : ''} ${
+                    className || ''
+                } ${options.join(' ')}`}
             />
         );
 
@@ -24,6 +43,8 @@ Button.propTypes = {
     onClick: PropTypes.func,
     to: PropTypes.string,
     className: PropTypes.string,
+    isLoading: PropTypes.bool,
+    options: PropTypes.array,
 };
 
 export default Button;

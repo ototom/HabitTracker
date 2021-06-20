@@ -46,11 +46,7 @@ const AuthForm = ({
                 value={values.password}
                 onChange={onInputChange}
             />
-            {/* TODO: add prop isLoading to the button component */}
-            <Button
-                disabled={isLoading}
-                className={isLoading ? `btn--loading` : ``}
-            >
+            <Button disabled={isLoading} isLoading={isLoading}>
                 {isLoginMode ? 'Login' : 'Sign up'}
             </Button>
         </form>

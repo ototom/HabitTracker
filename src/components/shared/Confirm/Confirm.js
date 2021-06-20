@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
+import Button, { BUTTON_OPTIONS } from '../Button/Button';
 import './Confirm.css';
 
 const Confirm = ({ heading, children, onConfirm, onCancel }) => {
@@ -14,11 +14,14 @@ const Confirm = ({ heading, children, onConfirm, onCancel }) => {
                 )}
                 <div className='confirm__content'>{children}</div>
                 <div className='confirm__footer'>
-                    <Button className='btn btn--small' onClick={onConfirm}>
+                    <Button
+                        options={[BUTTON_OPTIONS.small]}
+                        onClick={onConfirm}
+                    >
                         Confirm
                     </Button>
                     <Button
-                        className='btn btn--small btn--neutral'
+                        options={[BUTTON_OPTIONS.small, BUTTON_OPTIONS.neutral]}
                         onClick={onCancel}
                     >
                         Cancel

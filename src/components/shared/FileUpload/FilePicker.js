@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../Button/Button';
+import Button, { BUTTON_OPTIONS } from '../Button/Button';
 import './FilePicker.css';
 
 const FilePicker = ({
@@ -42,7 +42,7 @@ const FilePicker = ({
             <Button
                 onClick={pickFileHandler}
                 type='button'
-                className='btn--outline'
+                options={[BUTTON_OPTIONS.outline]}
             >
                 Pick file
             </Button>

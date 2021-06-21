@@ -3,6 +3,16 @@ import { createMemoryHistory } from 'history';
 import { Router } from 'react-router';
 import Dashboard from './Dashboard';
 
+let container = document.getElementById('splash-screen-container');
+
+beforeEach(() => {
+    if (!container) {
+        container = document.createElement('div');
+        container.setAttribute('id', 'splash-screen-container');
+        document.body.appendChild(container);
+    }
+});
+
 it('Shows 404 route if user enters non-existing path', () => {
     const history = createMemoryHistory({
         initialEntries: ['/non-existing-path'],
@@ -13,7 +23,7 @@ it('Shows 404 route if user enters non-existing path', () => {
         </Router>
     );
 
-    expect(queryByText(/404/i)).toBeInTheDocument();
+    expect(queryByText(/not found/i)).toBeInTheDocument();
 });
 it('Shows successfully habits page when user enters the address without additional routes', () => {
     const history = createMemoryHistory({

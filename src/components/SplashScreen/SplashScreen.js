@@ -13,7 +13,7 @@ const SplashScreen = () => {
     const unmountSplashScreen = () => setIsMounted(false);
 
     useEffect(() => {
-        if (!isUserLoading || !isHabitsLoading) setIsClosing(true);
+        if (!isUserLoading && !isHabitsLoading) setIsClosing(true);
     }, [isUserLoading, isHabitsLoading]);
 
     useEffect(() => {
@@ -32,6 +32,7 @@ const SplashScreen = () => {
             className={`splash-screen ${
                 isClosing ? 'splash-screen--is-closing' : ''
             }`}
+            data-testid='splash-screen-container'
         >
             <div className='lds-grid'>
                 <div></div>

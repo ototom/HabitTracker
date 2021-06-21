@@ -13,6 +13,13 @@ const AuthForm = ({
 }) => {
     return (
         <form className='auth__form' onSubmit={submitHandler}>
+            {isLoginMode && (
+                <div className='alert alert--blue'>
+                    <strong>Demo account:</strong>
+                    <li>Email: demo@demo.com</li>
+                    <li>Password: demo00</li>
+                </div>
+            )}
             <Alert errors={errors} />
             {!isLoginMode && (
                 <Input

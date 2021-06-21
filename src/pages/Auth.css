@@ -1,6 +1,6 @@
 .auth__container {
     width: 95vw;
-    height: 95vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -22,8 +22,9 @@
 
 @media (min-width: 768px) {
     .auth__container {
+        position: absolute;
         width: 500px;
-        height: 700px;
+        height: auto;
     }
 }
 

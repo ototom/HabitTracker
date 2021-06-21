@@ -66,10 +66,16 @@ button {
 
 .backdrop {
     height: 100vh;
-    background:hsla(0, 0%, 0%, 0.1);
+    background: hsla(0, 0%, 0%, 0.1);
     z-index: 115;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+}
+
+.alert--blue {
+    border-color: #85C1E9;
+    color: #85C1E9;
+    background-color: #D6EAF8;
 }
